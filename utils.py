@@ -14,7 +14,8 @@ def extract_date_band(filename, expr1, expr2, expr3):
     result = re.search(expr1, filename)
     _type=""
     if result:
-        date = result.group(1)
+        _type = result.group()
+        _type = "NALMA_" + _type
     else:
         print("utils.py extract_date_band >>> No match found. -- first")
 
@@ -22,16 +23,17 @@ def extract_date_band(filename, expr1, expr2, expr3):
     result = re.search(expr2, filename)
     date=""
     if result:
-        date = result.group(1)
+        date = result.group()
     else:
         print("utils.py extract_date_band >>> No match found. -- second")
 
     result = re.search(expr3, filename)
     band=""
     if result:
-        band = result.group(1)
+        band = result.group()
     else:
         print("utils.py extract_date_band >>> No match found. --third")
+    print(f"type: {_type}, date: {date}, band: {band}")
     return _type, date, band
 
 def json_outfile(data, output_file_path="output.json"):

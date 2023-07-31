@@ -1,6 +1,5 @@
 from s3_operations import read_bucket
 from utils import *
-from validate import *
 from log import *
 import sys
 import re
@@ -40,7 +39,7 @@ for path in files:
         "type":_type,
         "date":date,
         "band":band,
-        "path":path['Key']
+        "path":f"s3://{bucket_name}/{path['Key']}"
     })
 print("Dict of data complete.")
 
